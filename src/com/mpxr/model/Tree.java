@@ -7,7 +7,7 @@ public class Tree {
 
     private Node root;
 
-    public Tree(FileStructure rootData) {
+    public Tree(FileSystemStructure rootData) {
         root = new Node();
         root.data = rootData;
         root.children = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Tree {
     }
 
     public static class Node {
-        private FileStructure data;
+        private FileSystemStructure data;
         private Node parent;
         private List<Node> children;
         private String path;
@@ -31,7 +31,7 @@ public class Tree {
         private Node() {
         }
 
-        public Node(FileStructure data, Node parent) {
+        public Node(FileSystemStructure data, Node parent) {
             this.data = data;
             this.parent = parent;
             children = new ArrayList<>();
@@ -42,7 +42,7 @@ public class Tree {
             }
         }
 
-        public FileStructure getData() {
+        public FileSystemStructure getData() {
             return data;
         }
 

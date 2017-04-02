@@ -1,8 +1,8 @@
 package com.mpxr;
 
-import com.mpxr.model.Directory;
+import com.mpxr.model.Folder;
 import com.mpxr.model.File;
-import com.mpxr.model.FileStructure;
+import com.mpxr.model.FileSystemStructure;
 import com.mpxr.model.Tree;
 
 public class TreeInitializer {
@@ -11,22 +11,33 @@ public class TreeInitializer {
          Tree tree;
 
         //Base directory & node
-        FileStructure baseDirectory = new Directory("DB");
+        FileSystemStructure baseDirectory = new Folder("DB");
         Tree.Node baseDirectoryNode = new Tree.Node(baseDirectory, null);
 
         //Files in base directory & nodes
-        FileStructure file1 = new File("file1");
-        FileStructure file2 = new File("file2");
+        FileSystemStructure file1 = new File("file1");
+        FileSystemStructure file2 = new File("file2");
         Tree.Node fileNode1 = new Tree.Node(file1, baseDirectoryNode);
         Tree.Node fileNode2 = new Tree.Node(file2, baseDirectoryNode);
 
         //Sub directory in base directory & node
-        FileStructure subDirectory = new Directory("sub");
+        FileSystemStructure subDirectory = new Folder("sub");
         Tree.Node subDirectoryNode = new Tree.Node(subDirectory, baseDirectoryNode);
 
+        //Sub sub directory in base directory & node
+        FileSystemStructure subSubDirectory = new Folder("sub");
+        Tree.Node subSubDirectoryNode = new Tree.Node(subDirectory, subDirectoryNode);
+
+        FileSystemStructure subSubFile1 = new File("subSubFile1");
+        Tree.Node subSubFileNode1 = new Tree.Node(subSubFile1, subSubDirectoryNode);
+
+        subSubDirectoryNode.addChildren(subSubFileNode1);
+
+        subDirectoryNode.addChildren(subSubDirectoryNode);
+
         //Files in sub directories & node
-        FileStructure subFile1 = new File("subFile1");
-        FileStructure subFile2 = new File("subFile2");
+        FileSystemStructure subFile1 = new File("subFile1");
+        FileSystemStructure subFile2 = new File("subFile2");
         Tree.Node subFileNode1 = new Tree.Node(subFile1, subDirectoryNode);
         Tree.Node subFileNode2 = new Tree.Node(subFile2, subDirectoryNode);
         subDirectoryNode.addChildren(subFileNode1);

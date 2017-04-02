@@ -1,16 +1,16 @@
 package com.mpxr.model;
 
-public class File implements FileSystemStructure {
+public class Folder implements FileSystemStructure {
 
-    private String name;
+    private String name ;
 
-    public File(String name) {
+    public Folder(String name) {
         this.name = name;
     }
 
     @Override
     public boolean isDirectory() {
-        return false;
+        return true;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.mpxr.model;
 
-public interface FileStructure {
+public interface FileSystemStructure {
 
     String getName();
 

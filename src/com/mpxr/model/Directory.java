@@ -1,20 +1,45 @@
 package com.mpxr.model;
 
-public class Directory implements FileStructure {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String name ;
+public class Directory {
 
-    public Directory(String name) {
-        this.name = name;
-    }
+    private String name;
 
-    @Override
-    public boolean isDirectory() {
-        return true;
-    }
+    private List<Directory> directory;
 
-    @Override
+    private List<String> files;
+
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Directory> getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(List<Directory> directory) {
+        this.directory = directory;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<String> files) {
+        this.files = files;
+    }
+
+    public void addFile(String file){
+        if(files == null){
+            files = new ArrayList<>();
+        }
+        files.add(file);
+    }
+
 }
